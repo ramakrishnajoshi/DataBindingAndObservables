@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.databindingobservablefield.ui.main.observable.MainViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.observable.MainFragment">
+
+
+        <TextView
+            android:id="@+id/firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.userDetailsObservable.firstName}"
+            android:background="#71DBE8" />
+
+        <TextView
+            android:id="@+id/lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.userDetailsObservable.lastName}"
+            android:background="#E5DFAF" />
+
+        <Button
+            android:id="@+id/change_name_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change First and Last name"
+            android:onClick="@{() -> viewModel.onChangeNameButtonClicked()}"/>
+
+        <TextView
+            android:id="@+id/phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@{viewModel.getContactNumber()}"
+            android:background="#E5DFAF" />
+
+        <TextView
+            android:id="@+id/phone_number_observable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.contactInfoObservable.phoneNumber}"
+            android:background="#E5DFAF" />
+
+        <Button
+            android:id="@+id/change_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change Phone Number"
+            android:onClick="@{() -> viewModel.onChangePhoneNUmberButtonClicked()}"/>
+
+    </LinearLayout>
+</layout>

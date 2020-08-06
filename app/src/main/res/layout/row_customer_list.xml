@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="customerData"
+            type="com.example.databindingobservablefield.ui.main.recyclerview.model.Customer" />
+
+        <variable
+            name="viewModel"
+            type="com.example.databindingobservablefield.ui.main.recyclerview.CustomerViewModel" />
+        <variable
+            name="position"
+            type="Integer" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:background="#58BFCC"
+        >
+<!--        android:background="@{customerData.isMale ? #58BFCC : #1b1b1b}">-->
+
+        <TextView
+            android:id="@+id/customer_name"
+            android:layout_width="wrap_content"
+            android:minWidth="200dp"
+            android:text="@{customerData.name}"
+            android:layout_height="wrap_content"
+            android:background="#EDE389" />
+
+        <TextView
+            android:id="@+id/customer_age"
+            android:layout_width="wrap_content"
+            android:minWidth="200dp"
+            android:text="@{String.valueOf(customerData.age)}"
+            android:layout_height="wrap_content"
+            android:background="#E6C593" />
+
+        <TextView
+            android:id="@+id/customer_gender"
+            android:layout_width="wrap_content"
+            android:minWidth="200dp"
+            android:text="@{viewModel.getGender(customerData.isMale)}"
+            android:layout_height="wrap_content"
+            android:background="#E6C593" />
+
+        <Button
+            android:id="@+id/increase_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="increase qty"
+            android:onClick="@{() -> viewModel.increaseQuantity(position)}"/>
+
+    </LinearLayout>
+</layout>
